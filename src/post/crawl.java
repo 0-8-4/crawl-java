@@ -49,11 +49,11 @@ public class crawl {
     public static void main(String[] args) {
         //发送POST请求
         Scanner s = new Scanner(System.in);
-        String word = s.next();
+        String word = s.nextLine();
         String param = "i=" + word + "&from=AUTO&to=AUTO&martresult=dict&client=fanyideskweb&salt=15616147260797&sign=2fcf94806d5b42374843bead371bf289&ts=1561614726079&bv=e2a78ed30c66e16a857c5b6486a1d326&doctype=json&version= 2.1&keyfrom=fanyi.web&action=FY_BY_REALTlME";
         String s1 = crawl.sendPost("http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule", param);
         //{"type":"EN2ZH_CN","errorCode":0,"elapsedTime":1,"translateResult":[[{"src":"fuck","tgt":"操"}]]}
-        JSONObject tempJB = JSONObject.parseObject("{\"type\":\"EN2ZH_CN\",\"errorCode\":0,\"elapsedTime\":1,\"translateResult\":[[{\"src\":\"fuck\",\"tgt\":\"操\"}]]}");
+        JSONObject tempJB = JSONObject.parseObject(s1);
         String strTempJB = tempJB.getString("translateResult");
         JSONArray tempJB1 = JSONArray.parseArray(strTempJB);
         String strTempJB2 = tempJB1.getString(0);
